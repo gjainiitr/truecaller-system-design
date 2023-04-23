@@ -1,0 +1,48 @@
+IApplication: Manages the entire application
+    public:
+    RegisterUser(IUser user)
+
+ILoginManager: Manages login/signup functionality
+    public:
+    bool Login(string number, string password)
+    bool Signup(string number, string password)
+
+IUser:
+    private:
+    string Name
+    bool isPremium
+    string Number
+    // Should have a local and a global name? - Debatable
+
+    public:
+
+IContact: Handles all the user contacts
+    private: (part of class and not of interface, remove later on)
+    string number;
+    string globalName;
+    string localName
+
+    public:
+    string GetNumber()
+    string GetGlobalName()
+    string GetLocalName()
+
+
+IBlockingManager: Manages the blocking functionality
+    public:
+    bool BlockContact(IContact contact)
+    bool UnblockContact(IContact contact)
+    bool isBlocked(IContact contact)
+
+ISpamManager: Reports/Warns user about spam calls
+    public:
+    bool ReportSpam(string number);
+    bool isSpam(string number);
+
+IContactManager: App internal contact manager which interacts with global phonebook and gets/sets contacts
+    public:
+    bool AddContact(IContact contact)
+    bool RemoveContact(IContact contact)
+    bool UpdateContact(IContact contact)
+    bool UploadContacts(List<IContact> contacts)
+    IContact GetContact(string number)

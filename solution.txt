@@ -1,0 +1,24 @@
+Objects:
+User
+Contact
+App
+
+Features:
+Block
+Import
+Report
+Identify
+Upgrade
+Global directory
+
+------------------
+
+IApplication:
+    RegisterUser()
+    AddContacts()
+    BlockContact()
+    ReportSpam()
+    UnblockNumber()
+    Upgrade()
+    
+    
