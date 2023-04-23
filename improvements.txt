@@ -1,0 +1,16 @@
+Thing about how you can cache data
+    Try using local storage
+Periodic sync with the server - Just like To Do
+    Update/Validate data
+    Upload data to server
+Add Table schema (for local storage)
+    How many tables you are going to have
+    What all data stored in each table
+
+    For example:
+    1 table for user data
+    1 table for phone numbers data
+Decide cloud storage
+    E.g. Use AWS DynamoDB for storing user data
+Caching?
+    When to use?
