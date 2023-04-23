@@ -20,5 +20,3 @@ IApplication:
     ReportSpam()
     UnblockNumber()
     Upgrade()
-    
-    

@@ -1,31 +1,64 @@
 IApplication: Manages the entire application
     public:
-    RegisterUser(IUser user)
+    RegisterUser() -> ILoginManager
 
-ILoginManager: Manages login/signup functionality
+ILoginManager: Manages login/signup functionality/Forgot password
     public:
     bool Login(string number, string password)
     bool Signup(string number, string password)
+
+IProfileManager: // personal details
+    UpdateName();
+    UpdateEmail();
+    UpdateBusiness();
+    UpdateAddress();
+
+IPaymentsManager:
+    public:
+    bool DoPayments();
+
+ISubscriptionManager: Checks and maintains subscription
+    public:
+    bool isPremium(IUser user)
+    bool UpgradeToPremium(IUser user)    
+
+IBusiness:
+    string Name;
+    string Address;
+    string Number;
+    string RegistrationNumber;
+
+    public:
+    GetName()
+    SetName(string newName);
+    GetAddress();
+    SetAddress(string newAddress);
+    ...
 
 IUser:
     private:
     string Name
     bool isPremium
     string Number
-    // Should have a local and a global name? - Debatable
+    string ID
 
     public:
+    SetName(string newName)
+    GetName()
+
 
 IContact: Handles all the user contacts
     private: (part of class and not of interface, remove later on)
     string number;
     string globalName;
-    string localName
+    string localName;
+    Business business;
 
     public:
     string GetNumber()
     string GetGlobalName()
     string GetLocalName()
+    Business GetBusinessDetails()
 
 
 IBlockingManager: Manages the blocking functionality
@@ -37,6 +70,7 @@ IBlockingManager: Manages the blocking functionality
 ISpamManager: Reports/Warns user about spam calls
     public:
     bool ReportSpam(string number);
+    bool ReportSpanAndBlock(string number);
     bool isSpam(string number);
 
 IContactManager: App internal contact manager which interacts with global phonebook and gets/sets contacts
@@ -45,4 +79,23 @@ IContactManager: App internal contact manager which interacts with global phoneb
     bool RemoveContact(IContact contact)
     bool UpdateContact(IContact contact)
     bool UploadContacts(List<IContact> contacts)
+    List<IContact> GetAllContacts()
     IContact GetContact(string number)
+    IContact GetContact(string name)
+
+ICallingManger: Handles all receiving and outgoing calls
+    ReceivingCall: Event listener
+        Check for blocked -> Hang up
+        Get Number details
+        Check for Spam -> Show warning
+        Show UI for call with actions
+
+Pages:
+Sign in page
+Home page
+    Upgrade
+    Search
+        Search bar
+        Recent searches
+    Contacts
+CallingManager
